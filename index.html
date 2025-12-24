@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>New Year Gift</title>
+
+    <!-- Google Font за наслови и текст -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #1b2735 0%, #090a0f 55%, #000000 100%);
+            color: #f5f5f5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10vh;
+            color: #fff;
+            user-select: none;
+            opacity: 0.85;
+            will-change: transform;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            text-shadow: 0 0 8px rgba(255,255,255,0.7);
+        }
+
+        @keyframes fall {
+            0%   { transform: translate(0, -10vh); }
+            25%  { transform: translate(20px, 25vh); }
+            50%  { transform: translate(-10px, 55vh); }
+            75%  { transform: translate(25px, 80vh); }
+            100% { transform: translate(-15px, 110vh); }
+        }
+
+        .snowflake:nth-child(1)  { left: 10%; font-size: 10px; animation-duration: 10s; animation-delay: 0s; }
+        .snowflake:nth-child(2)  { left: 20%; font-size: 16px; animation-duration: 12s; animation-delay: 2s; }
+        .snowflake:nth-child(3)  { left: 30%; font-size: 13px; animation-duration: 15s; animation-delay: 1s; }
+        .snowflake:nth-child(4)  { left: 40%; font-size: 11px; animation-duration: 11s; animation-delay: 3s; }
+        .snowflake:nth-child(5)  { left: 50%; font-size: 18px; animation-duration: 14s; animation-delay: 0s; }
+        .snowflake:nth-child(6)  { left: 60%; font-size: 13px; animation-duration: 13s; animation-delay: 4s; }
+        .snowflake:nth-child(7)  { left: 70%; font-size: 15px; animation-duration: 10s; animation-delay: 2s; }
+        .snowflake:nth-child(8)  { left: 80%; font-size: 9px;  animation-duration: 16s; animation-delay: 1s; }
+        .snowflake:nth-child(9)  { left: 90%; font-size: 17px; animation-duration: 12s; animation-delay: 5s; }
+        .snowflake:nth-child(10) { left: 15%; font-size: 13px; animation-duration: 14s; animation-delay: 3s; }
+        .snowflake:nth-child(11) { left: 25%; font-size: 11px; animation-duration: 11s; animation-delay: 0s; }
+        .snowflake:nth-child(12) { left: 35%; font-size: 16px; animation-duration: 13s; animation-delay: 4s; }
+        .snowflake:nth-child(13) { left: 45%; font-size: 13px; animation-duration: 15s; animation-delay: 2s; }
+        .snowflake:nth-child(14) { left: 55%; font-size: 10px; animation-duration: 10s; animation-delay: 1s; }
+        .snowflake:nth-child(15) { left: 65%; font-size: 15px; animation-duration: 12s; animation-delay: 5s; }
+        .snowflake:nth-child(16) { left: 75%; font-size: 17px; animation-duration: 14s; animation-delay: 0s; }
+        .snowflake:nth-child(17) { left: 85%; font-size: 11px; animation-duration: 11s; animation-delay: 3s; }
+        .snowflake:nth-child(18) { left: 95%; font-size: 13px; animation-duration: 13s; animation-delay: 2s; }
+        .snowflake:nth-child(19) { left: 5%;  font-size: 16px; animation-duration: 15s; animation-delay: 1s; }
+        .snowflake:nth-child(20) { left: 50%; font-size: 18px; animation-duration: 12s; animation-delay: 4s; }
+
+        .screen, .section {
+            display: none;
+            min-height: 100vh;
+            width: 100vw;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-y: auto;
+            position: relative;
+            z-index: 20;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fade 0.6s ease;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            margin-top: 0;
+            letter-spacing: 0.05em;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+        }
+
+        h1 {
+            font-weight: 700;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff4b6a, #ce3cff);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            font-weight: 500;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(0,0,0,0.55);
+            filter: brightness(1.05);
+        }
+
+        .back-btn {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #444, #777);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 600px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform .3s, box-shadow .3s;
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.55);
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.04) translateY(-3px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.7);
+        }
+
+        .photo-grid img:nth-child(even) { transform: rotate(1.5deg); }
+        .photo-grid img:nth-child(odd)  { transform: rotate(-1.5deg); }
+
+        .hypno-gif {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 20px 0;
+            border: 4px solid white;
+            object-fit: cover;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+        }
+
+        .gift-box {
+            width: 260px;
+            height: 260px;
+            border-radius: 24px;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.85);
+        }
+
+        .gift-reveal {
+            display: none;
+            max-width: 340px;
+        }
+
+        .gift-reveal img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 10px 26px rgba(0,0,0,0.7);
+            margin-bottom: 12px;
+        }
+
+        .gift-reveal p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        #start-screen {
+            min-height: 100vh;
+            width: 100vw;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            position: relative;
+        }
+
+        .start-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .slider-container {
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .slider-container input[type="range"] {
+            width: 100%;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ff4b6a, #ff3c59);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #ff4b6a;
+            box-shadow: 0 0 10px rgba(255,75,106,0.7);
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #ff4b6a;
+            box-shadow: 0 0 10px rgba(255,75,106,0.7);
+            cursor: pointer;
+        }
+
+        .menu-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        .menu-buttons button {
+            min-width: 130px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .game-cell {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+        }
+
+        .game-cell:hover {
+            background: rgba(255,255,255,0.16);
+            transform: translateY(-2px);
+        }
+
+        .game-score {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .slider-image {
+            margin-top: 16px;
+            max-width: 260px;
+            border-radius: 16px;
+            box-shadow: 0 10px 26px rgba(0,0,0,0.7);
+        }
+
+        @media (max-width: 600px) {
+            .screen, .section {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                max-width: 90%;
+            }
+
+            .photo-grid img {
+                width: 100%;
+                height: 120px;
+                border-radius: 12px;
+            }
+
+            .hypno-gif {
+                width: 220px;
+                height: 220px;
+            }
+
+            .gift-box {
+                width: 220px;
+                height: 220px;
+            }
+
+            .gift-reveal {
+                max-width: 90%;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            #start-screen button {
+                padding: 10px 18px;
+            }
+
+            .game-grid {
+                grid-template-columns: repeat(3, 70px);
+                grid-template-rows: repeat(3, 70px);
+            }
+
+            .game-cell {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+</div>
+
+<section id="start-screen">
+    <h1>Сакаш ли поклон</h1>
+    <div class="start-buttons">
+        <button onclick="startIntro()">Сакам поклон</button>
+        <button onclick="dontWantGift()">Нејкам поклон</button>
+    </div>
+</section>
+
+<section id="intro1" class="screen">
+    <h1>Пред се:</h1>
+    <p>
+        Знам дека работите се лоши, ама сакаше нешто да ти дадам за Нова Година, ама некако немаше идеа
+        шо би било соодветно, и ми текна воа (ем да си го покажам таленто од факултето). Извини за се,
+        не заслужуваше ти ништо од тоа, ама барем...
+    </p>
+    <button onclick="showScreen('intro2')">➜</button>
+</section>
+
+<section id="intro2" class="screen">
+    <h1>Среќна Нова Година (рано ама поклон нели)</h1>
+    <p>
+        Знам како се работите и претпоставувам како ќе бидат, ама надевам се
+        дека мош нешто ќе може да се смене, како шо ти кажа јас уште ќе бидам тука засекогаш.
+    </p>
+    <button onclick="showScreen('menuScreen')">➜</button>
+</section>
+
+<section id="menuScreen" class="screen">
+    <p>Одбери си шо сакаш</p>
+
+    <div class="menu-buttons">
+        <button onclick="openSection('gameSection')">Игра</button>
+        <button onclick="openSection('photosSection')">Слики</button>
+        <button onclick="openSection('magicSection')">Магија</button>
+        <button onclick="openSection('drinkSection')">Пијачка</button>
+        <button onclick="openSection('giftSection')">Поклон</button>
+        <button onclick="openSection('songSection')">Песна</button>
+        <button onclick="openSection('complimentSection')">Комплимент</button>
+        <button onclick="openSection('dentistSection')">Стоматолог</button>
+        <button onclick="openSection('sliderSection')">Драган досаден</button>
+        <button onclick="openSection('finalSection')">Последно</button>
+    </div>
+</section>
+
+<section id="gameSection" class="section">
+    <h1>ОД GPT ЦЕЛАТА АМА ИНТЕРЕСНА Е</h1>
+    <p>Кликни ❤️ за +1 поен, ако кликнеш ❌ ти вадам поен.</p>
+
+    <div class="game-grid" id="gameGrid">
+        <div class="game-cell" onclick="clickCell(0)"></div>
+        <div class="game-cell" onclick="clickCell(1)"></div>
+        <div class="game-cell" onclick="clickCell(2)"></div>
+        <div class="game-cell" onclick="clickCell(3)"></div>
+        <div class="game-cell" onclick="clickCell(4)"></div>
+        <div class="game-cell" onclick="clickCell(5)"></div>
+        <div class="game-cell" onclick="clickCell(6)"></div>
+        <div class="game-cell" onclick="clickCell(7)"></div>
+        <div class="game-cell" onclick="clickCell(8)"></div>
+    </div>
+    <div class="game-score">Поени: <span id="score">0</span></div>
+
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="photosSection" class="section">
+    <h1>Од нас нешто</h1>
+    <div class="photo-grid">
+        <img src="images/6.jpg" alt="Moment 1">
+        <img src="images/5.jpg" alt="Moment 2">
+        <img src="images/3.jpg" alt="Moment 3">
+        <img src="images/4.jpg" alt="Moment 4">
+    </div>
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="magicSection" class="section">
+    <h1>САКАШ ГО ДРАГАН</h1>
+
+    <img
+            src="images/hypnotize.gif"
+            alt="Hypnotic Spiral"
+            class="hypno-gif"
+    >
+
+    <p>
+        Шалам се, ама стварно ми значеш ногу
+    </p>
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="drinkSection" class="section">
+    <h1>Само за тебе</h1>
+
+    <img src="images/kokakola.gif" alt="Drink" style="max-width:300px;border-radius:16px;margin-top:16px;">
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="giftSection" class="section">
+    <h1>Поклон за тебе (кликни го)</h1>
+
+    <img
+            src="images/Adobe%20Express%20-%20file.png"
+            alt="Gift box"
+            class="gift-box"
+            id="giftBox"
+            onclick="openGift()"
+    >
+
+    <div class="gift-reveal" id="giftReveal">
+        <img src="images/ted.jpg" alt="Opened gift">
+        <p>
+            Жими се сакаше вакво да ти земам за поклон, ама не најде или па немаше да биде до Нова Година.
+            Толку можам само на слика.
+        </p>
+    </div>
+
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="songSection" class="section">
+    <p>Ногу ја гледам серијата у последно време</p>
+
+    <div style="position:relative;padding-bottom:56.25%;height:0;max-width:560px;width:100%;">
+        <iframe id="songFrame"
+                src="https://www.youtube.com/embed/9foKesji-Os"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="complimentSection" class="section">
+    <p>Кликни на копчето за комплимент.</p>
+
+    <button onclick="showCompliment()">Дај комплимент</button>
+    <p id="complimentText" style="margin-top:16px;max-width:400px;"></p>
+
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="dentistSection" class="section">
+    <h1>Иднио најјак стоматолог</h1>
+    <p>Овoa у иднина ќе бидеш ти, само продужи така.</p>
+
+    <img src="images/doktor.gif"
+         alt="Стоматолог гиф"
+         style="max-width:300px;border-radius:16px;margin-top:16px;">
+
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="sliderSection" class="section">
+    <h1>Одбери колку сум досаден веќе</h1>
+    <p>Колку ме замара Драган (од 1 до 100):(влечи јако е) <span id="sliderValue">50</span></p>
+    <div class="slider-container">
+        <input type="range" id="annoySlider" min="1" max="100" value="50" oninput="updateSliderValue(this.value)">
+    </div>
+    <img id="sliderImage" class="slider-image" src="images/slider1.jpg" alt="Slider mood">
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<section id="finalSection" class="section">
+    <p>
+        Надевам се дека не изгледа ногу жално воа, знам дека е смешно и глупаво , ама искрено сакаше да ти подарам нешто стварно, ама немаше
+        идеа поконкретно шо, а воа требаше и за родендено да ти биде, а сеа немам веќе ногу шанси кога, па затоа повели.
+    </p>
+    <p>
+        Сакам те и секогаш ќе те сакам највеќе.
+    </p>
+    <h2>Среќна нова година ❤️</h2>
+    <button class="back-btn" onclick="backToMenu()">Назад</button>
+</section>
+
+<script>
+    function hideAllScreens() {
+        document.querySelectorAll('.screen, .section').forEach(el => el.classList.remove('active'));
+    }
+
+    function startIntro() {
+        document.getElementById('start-screen').style.display = 'none';
+        hideAllScreens();
+        document.getElementById('intro1').classList.add('active');
+    }
+
+    function dontWantGift() {
+        alert("Нема нејќеш, мора сакам");
+    }
+
+    function showScreen(id) {
+        hideAllScreens();
+        document.getElementById(id).classList.add('active');
+    }
+
+    function openSection(id) {
+        hideAllScreens();
+        document.getElementById(id).classList.add('active');
+        if (id === 'gameSection') {
+            startGame();
+        }
+    }
+
+    function backToMenu() {
+        hideAllScreens();
+        document.getElementById('menuScreen').classList.add('active');
+    }
+
+    function openGift() {
+        const box = document.getElementById("giftBox");
+        const reveal = document.getElementById("giftReveal");
+        box.style.display = "none";
+        reveal.style.display = "block";
+    }
+
+    function updateSliderValue(value) {
+        document.getElementById("sliderValue").textContent = value;
+        const img = document.getElementById("sliderImage");
+        const v = parseInt(value, 10);
+
+        if (v <= 40) {
+            img.src = "images/slider1.jpg";
+        } else if (v <= 80) {
+            img.src = "images/slider2.jpg";
+        } else {
+            img.src = "images/slider3.jpg";
+        }
+    }
+
+    const compliments = [
+        "Прекрасна си.",
+        "Секој момент со тебе ми е омилен.",
+        "Ти си најубавото нешто шо ми се има десено.",
+        "Ко зборам со тебе поубав ми е дено.",
+        "Не знам како, ама секогаш ме смируваш.",
+        "Ќе бидеш ногу добар заболекар.",
+        "Извини за се па.",
+        "Ногу убаво се смееш.",
+        "Ногу си мила.",
+        "Ногу фино дете",
+        "Прекрасно миришеш",
+        "Имаш преубави очи",
+        "Ногу си смешна(у добра смисла)",
+        "Препозитивна",
+        "Ногуу си убава",
+        "ЦАР",
+        "Сите те сакат, и има зашо",
+        "Убаво се облекуваш",
+        "Ногу мило срце имаш"
+
+    ];
+
+    function showCompliment() {
+        const el = document.getElementById("complimentText");
+        const index = Math.floor(Math.random() * compliments.length);
+        el.textContent = compliments[index];
+    }
+
+    let score = 0;
+    let currentIndex = -1;
+    let currentSymbol = null;
+    let gameInterval = null;
+
+    function randomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function spawnSymbol() {
+        const cells = document.querySelectorAll(".game-cell");
+        cells.forEach(c => c.textContent = "");
+
+        currentIndex = randomInt(cells.length);
+        currentSymbol = Math.random() < 0.7 ? "❤️" : "❌";
+        cells[currentIndex].textContent = currentSymbol;
+    }
+
+    function clickCell(index) {
+        if (index !== currentIndex || !currentSymbol) return;
+
+        if (currentSymbol === "❤️") {
+            score++;
+        } else {
+            score--;
+        }
+        document.getElementById("score").textContent = score;
+        currentSymbol = null;
+    }
+
+    function startGame() {
+        if (gameInterval) return;
+        score = 0;
+        document.getElementById("score").textContent = score;
+        spawnSymbol();
+        gameInterval = setInterval(spawnSymbol, 900);
+    }
+
+    document.addEventListener('click', function () {
+        if (!document.getElementById('gameSection').classList.contains('active') && gameInterval) {
+            clearInterval(gameInterval);
+            gameInterval = null;
+        }
+    });
+</script>
+</body>
+</html>
